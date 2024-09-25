@@ -1,5 +1,35 @@
+* {
+  margin: 0px;
+}
+
 body {
   background-color: aliceblue;
   margin: 0px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.box {
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  float: left;
+}
+
+.txt {
+  color: blue;
+}
+
+#box-container {
+  width: 430px;
+  height: 430px;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.box:hover {
+  background-color: rgb(137, 137, 137);
 }

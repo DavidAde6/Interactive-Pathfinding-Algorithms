@@ -10,6 +10,35 @@
     <title>Interactive Pathfinding Algorithms</title>
   </head>
   <body>
-    TESTING
+    <h1 id="display-txt">Click on a block to make it the starting block</h1>
+    <div id="box-container">
+      {% for row in grid %} {% for pos in row %}
+      <div class="box" id="{{ pos }}"></div>
+      {% endfor %} {% endfor %}
+    </div>
+
+    <script>
+      var starting_box;
+      var wall_box;
+      var ending_box;
+
+      var container = document.getElementById("box-container");
+      var displayTxt = document.getElementById("display-txt");
+
+      function setStartingBox() {
+        console.log(starting_box);
+      }
+
+      function setWallBox() {}
+
+      function setendingBox() {}
+
+      container.addEventListener("click", function () {
+        if (event.target.id != "box-container") {
+          starting_box = event.target.id;
+        }
+        // Make this get the id, starting_box to the app.py
+      });
+    </script>
   </body>
 </html>
