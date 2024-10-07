@@ -33,3 +33,47 @@ body {
 .box:hover {
   background-color: rgb(137, 137, 137);
 }
+
+#startingBox-txt {
+  display: none;
+}
+
+#endingBox-txt {
+  display: none;
+}
+
+#wallBox-txt {
+  display: none;
+}
+
+#start1 {
+  display: none;
+}
+
+#end1 {
+  display: none;
+}
+
+#wall1 {
+  display: none;
+}
+
+#start2 {
+  display: none;
+}
+
+#end2 {
+  display: none;
+}
+
+#wall2 {
+  display: none;
+}
+
+#submit-bfs {
+  display: none;
+}
+
+#submit-dfs {
+  display: none;
+}
