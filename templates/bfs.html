@@ -1,6 +1,24 @@
-{% extends "index.html" %} 
-{% block title %} Breath First Search {% endblock %}
-
-{% block content %}
-<h1>Breath First Search</h1>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/style.css') }}"
+    />
+    <title>Breath First Search Display</title>
+  </head>
+  <body>
+    <h1 id="intro-txt">Displaying Breath First Search</h1>
+    <div id="box-container">
+    <div id="box-container">
+        {% for row in grid %} {% for pos in row %}
+        <div class="box {% if pos in path %} path {% endif %} {% if pos in wall %} wall {% endif %} {% if pos == start %} start {% endif %} {% if pos == end %} end {% endif %} " id="{{ pos }}"></div>
+        {% endfor %} {% endfor %}
+      </div>
+      <h1>
+        Breath first search path == {{path}}
+      </h1>
+      <a href="javascript:history.back()"><button>Go back</button></a>
+  </body>

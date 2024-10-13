@@ -11,6 +11,7 @@
   </head>
   <body>
     <h1 id="intro-txt">Click on a block to make it the starting block</h1>
+    <a href="/"><button>Restart</button></a>
     <div id="box-container">
       {% for row in grid %} {% for pos in row %}
       <div class="box" id="{{ pos }}"></div>
@@ -58,17 +59,20 @@
             handle_clicks = 1;
           } else if (handle_clicks == 1) {
             ending_box = event.target.id;
-            document.getElementById("endingBox-num").innerHTML = ending_box;
-            document.getElementById("endingBox-txt").style.display = "block";
-            document.getElementById(ending_box).style.backgroundColor = "green";
-            document.getElementById("intro-txt").innerHTML =
-              "Now click on as many blocks as you'd like to add barriers. Press any button to get that algorithm visualized!";
-            document.getElementById("end1").value = ending_box;
-            document.getElementById("end2").value = ending_box;
-            handle_clicks = 2;
+            if (ending_box != starting_box){
+            console.log(ending_box)
+            console.log(starting_box)
+              document.getElementById("endingBox-num").innerHTML = ending_box;
+              document.getElementById("endingBox-txt").style.display = "block";
+              document.getElementById(ending_box).style.backgroundColor = "green";
+              document.getElementById("intro-txt").innerHTML =
+                "Now click on as many blocks as you'd like to add barriers. Press any button to get that algorithm visualized!";
+              document.getElementById("end1").value = ending_box;
+              document.getElementById("end2").value = ending_box;
+              handle_clicks = 2;}
           } else {
             var curr_Box = event.target.id;
-            if (wall_box.indexOf(curr_Box) == -1){
+            if (wall_box.indexOf(curr_Box) == -1 && curr_Box != starting_box && curr_Box != ending_box){
               wall_box.push(curr_Box);
               document.getElementById("wallBox-num").innerHTML = wall_box;
               document.getElementById("wallBox-txt").style.display = "block";

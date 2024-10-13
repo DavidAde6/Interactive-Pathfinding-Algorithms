@@ -77,3 +77,19 @@ body {
 #submit-dfs {
   display: none;
 }
+
+.path {
+  background-color: yellow; /* Highlight the path in yellow */
+}
+
+.start {
+  background-color: red;
+}
+
+.end {
+  background-color: green;
+}
+
+.wall {
+  background-color: darkgrey;
+}
