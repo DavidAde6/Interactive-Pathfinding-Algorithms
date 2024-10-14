@@ -104,8 +104,7 @@ def bfs():
         while True:
             
             if frontier.empty():
-                path = []
-                print("No solution")
+                path = ["No solution"]
                 break
             
             node = frontier.remove()
@@ -222,8 +221,7 @@ def dfs():
         while True:
             
             if frontier.empty():
-                path = []
-                print("No solution")
+                path = ["No solution"]
                 break
             
             node = frontier.remove()
