@@ -23,10 +23,10 @@ body {
 }
 
 #box-container {
-  width: 430px;
-  height: 430px;
+  width: 440px;
+  height: 440px;
   border-color: black;
-  border-width: 2px;
+  border-width: 0px;
   border-style: solid;
 }
 
