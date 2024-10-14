@@ -18,7 +18,8 @@
         {% endfor %} {% endfor %}
       </div>
       <h1>
-        Depth first search path == {{path}}
-      </h1>
+        {% if 'No solution' in path %} NO SOLUTION {% endif %}
+        {% if 'No solution' not in path %} Breath first search path == {{path}} {% endif %}
+    </h1>
       <a href="javascript:history.back()"><button>Go back</button></a>
   </body>

@@ -82,6 +82,13 @@
               document.getElementById("wall1").value = wall_box;
               document.getElementById("wall2").value = wall_box;
             }
+            else if(wall_box.indexOf(curr_Box) != -1){
+              document.getElementById(curr_Box).style.backgroundColor = "";
+              wall_box.splice(wall_box.indexOf(curr_Box))
+              document.getElementById("wallBox-num").innerHTML = wall_box;
+              document.getElementById("wall1").value = wall_box;
+              document.getElementById("wall2").value = wall_box;
+            }
           }
         }
       });
