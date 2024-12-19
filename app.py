@@ -133,6 +133,7 @@ def bfs():
 
         return render_template('bfs.html', grid=grid, path=path, start=start, end=end, wall=wall)
 
+# have to repeat code, no easy way out
 @app.route("/dfs", methods=["GET", "POST"])
 def dfs():
     if request.method == "POST":
