@@ -89,7 +89,7 @@ def bfs():
 
         def action(s): # takes in node.state, returns list
             result = []
-            nearby = [[s[0] - 1, s[1]], [s[0] + 1, s[1]], [s[0], s[1] - 1], [s[0], s[1] + 1]]
+            nearby = [[s[0] - 1, s[1]], [s[0] + 1, s[1]], [s[0], s[1] - 1], [s[0], s[1] + 1], [s[0] - 1, s[1] - 1], [s[0] - 1, s[1] + 1], [s[0] + 1, s[1] - 1], [s[0] + 1, s[1] + 1]]
             for state in nearby:
                 if state[0] >= 0 and state[0] <= 9 and state[1] >= 0 and state[1] <= 9:
                     if state not in explored:
@@ -206,7 +206,8 @@ def dfs():
 
         def action(s): # takes in node.state, returns list
             result = []
-            nearby = [[s[0] - 1, s[1]], [s[0] + 1, s[1]], [s[0], s[1] - 1], [s[0], s[1] + 1]]
+            nearby = [[s[0] - 1, s[1]], [s[0] + 1, s[1]], [s[0], s[1] - 1], [s[0], s[1] + 1], [s[0] - 1, s[1] - 1], [s[0] - 1, s[1] + 1], [s[0] + 1, s[1] - 1], [s[0] + 1, s[1] + 1]]
+            nearby.reverse()
             for state in nearby:
                 if state[0] >= 0 and state[0] <= 9 and state[1] >= 0 and state[1] <= 9:
                     if state not in explored:

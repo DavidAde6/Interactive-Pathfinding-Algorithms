@@ -10,16 +10,44 @@
     <title>Depth First Search Display</title>
   </head>
   <body>
-    <h1 id="intro-txt">Displaying Depth First Search</h1>
-    <div id="box-container">
-    <div id="box-container">
+    <div class="navbar">
+      <div class="nav-txt">Pathfinding Visualizer</div>
+      <div class="info">
+        <img
+          class="img"
+          src="https://img.icons8.com/?size=100&id=80585&format=png&color=000000"
+          alt="info"
+        />
+      </div>
+      <div class="info-box" style="height: 160px">
+        Depth First Search is an unweighted search algorithm that doesn't
+        guarantee the shortest path. But is more time efficient that a majority
+        of other search algorithms
+      </div>
+    </div>
+    <div id="intro-txt">Displaying Depth First Search</div>
+
+    <div class="main-container">
+      <div class="info-panel">
+        <div class="search-path">
+          {% if 'No solution' in path %} NO SOLUTION {% else %} Depth first
+          search path: {{ path }} {% endif %}
+        </div>
+      </div>
+      <div id="box-container">
         {% for row in grid %} {% for pos in row %}
-        <div class="box {% if pos in path %} path {% endif %} {% if pos in wall %} wall {% endif %} {% if pos == start %} start {% endif %} {% if pos == end %} end {% endif %} " id="{{ pos }}"></div>
+        <div
+          class="box {% if pos in path %} path {% endif %} {% if pos in wall %} wall {% endif %} {% if pos == start %} start {% endif %} {% if pos == end %} end {% endif %}"
+          id="{{ pos }}"
+        ></div>
         {% endfor %} {% endfor %}
       </div>
-      <h1>
-        {% if 'No solution' in path %} NO SOLUTION {% endif %}
-        {% if 'No solution' not in path %} Breath first search path == {{path}} {% endif %}
-    </h1>
-      <a href="javascript:history.back()"><button>Go back</button></a>
+    </div>
+
+    <div class="buttons">
+      <a href="javascript:history.back()"
+        ><button class="btn">Go back</button></a
+      >
+    </div>
   </body>
+</html>

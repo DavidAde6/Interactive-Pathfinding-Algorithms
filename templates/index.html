@@ -10,31 +10,61 @@
     <title>Interactive Pathfinding Algorithms</title>
   </head>
   <body>
-    <h1 id="intro-txt">Click on a block to make it the starting block</h1>
-    <a href="/"><button>Restart</button></a>
-    <div id="box-container">
-      {% for row in grid %} {% for pos in row %}
-      <div class="box" id="{{ pos }}"></div>
-      {% endfor %} {% endfor %}
+    <div class="navbar">
+      <div class="nav-txt">Pathfinding Visualizer</div>
+      <div class="info">
+        <img
+          class="img"
+          src="https://img.icons8.com/?size=100&id=80585&format=png&color=000000"
+          alt="info"
+        />
+      </div>
+      <div class="info-box">
+        Designed as part of Harvards CS50's Artificial Intelligence with Python
+        course. Built as a way to validate my understanding on basic AI
+        algorithms. More details on each algorithm when ran.
+      </div>
     </div>
-    <h1 id="startingBox-txt">Starting box</h1>
-    <h1 id="startingBox-num"></h1>
-    <h1 id="endingBox-txt">Ending box</h1>
-    <h1 id="endingBox-num"></h1>
-    <h1 id="wallBox-txt">Barrier box</h1>
-    <h1 id="wallBox-num"></h1>
-    <form action="/bfs" method="post">
-      <input id="start1" type="text" name="start1">
-      <input id="end1" type="text" name="end1">
-      <input id="wall1" type="text" name="wall1">
-      <input id="submit-bfs" type="submit" value="Use Breath First Search">
-    </form>
-    <form action="/dfs" method="post">
-      <input id="start2" type="text" name="start2">
-      <input id="end2" type="text" name="end2">
-      <input id="wall2" type="text" name="wall2">
-      <input id="submit-dfs" type="submit" value="Use Depth First Search">
-    </form>
+    <div id="intro-txt">Click on a block to make it the starting block</div>
+    <div class="main-container">
+      <div class="info-panel">
+        <div id="startingBox-txt">Starting box</div>
+        <div id="endingBox-txt">Ending box</div>
+        <div id="wallBox-txt">Barrier box</div>
+      </div>
+      <div id="box-container">
+        {% for row in grid %} {% for pos in row %}
+        <div class="box" id="{{ pos }}"></div>
+        {% endfor %} {% endfor %}
+      </div>
+    </div>
+    <div class="buttons">
+      <a href="/"><button id="restart" class="btn">Restart</button></a>
+      <form action="/bfs" method="post">
+        <input id="start1" type="text" name="start1" />
+        <input id="end1" type="text" name="end1" />
+        <input id="wall1" type="text" name="wall1" />
+        <input
+          id="submit-bfs"
+          class="btn"
+          type="submit"
+          value="Use Breath First Search"
+          disabled
+        />
+      </form>
+      <form action="/dfs" method="post">
+        <input id="start2" type="text" name="start2" />
+        <input id="end2" type="text" name="end2" />
+        <input id="wall2" type="text" name="wall2" />
+        <input
+          id="submit-dfs"
+          class="btn"
+          type="submit"
+          value="Use Depth First Search"
+          disabled
+        />
+      </form>
+    </div>
 
     <script>
       var starting_box;
@@ -49,8 +79,8 @@
         if (event.target.id != "box-container") {
           if (handle_clicks == 0) {
             starting_box = event.target.id;
-            document.getElementById("startingBox-num").innerHTML = starting_box;
-            document.getElementById("startingBox-txt").style.display = "block";
+            document.getElementById("startingBox-txt").innerHTML =
+              "Starting box: " + starting_box;
             document.getElementById(starting_box).style.backgroundColor = "red";
             document.getElementById("intro-txt").innerHTML =
               "Now click on a block to make it the end block";
@@ -59,33 +89,40 @@
             handle_clicks = 1;
           } else if (handle_clicks == 1) {
             ending_box = event.target.id;
-            if (ending_box != starting_box){
-            console.log(ending_box)
-            console.log(starting_box)
-              document.getElementById("endingBox-num").innerHTML = ending_box;
-              document.getElementById("endingBox-txt").style.display = "block";
-              document.getElementById(ending_box).style.backgroundColor = "green";
+            if (ending_box != starting_box) {
+              console.log(ending_box);
+              console.log(starting_box);
+              document.getElementById("endingBox-txt").innerHTML =
+                "Ending box: " + ending_box;
+              document.getElementById(ending_box).style.backgroundColor =
+                "green";
               document.getElementById("intro-txt").innerHTML =
                 "Now click on as many blocks as you'd like to add barriers. Press any button to get that algorithm visualized!";
               document.getElementById("end1").value = ending_box;
               document.getElementById("end2").value = ending_box;
-              handle_clicks = 2;}
+              handle_clicks = 2;
+            }
           } else {
             var curr_Box = event.target.id;
-            if (wall_box.indexOf(curr_Box) == -1 && curr_Box != starting_box && curr_Box != ending_box){
+            if (
+              wall_box.indexOf(curr_Box) == -1 &&
+              curr_Box != starting_box &&
+              curr_Box != ending_box
+            ) {
               wall_box.push(curr_Box);
-              document.getElementById("wallBox-num").innerHTML = wall_box;
-              document.getElementById("wallBox-txt").style.display = "block";
-              document.getElementById("submit-bfs").style.display = "block";
-              document.getElementById("submit-dfs").style.display = "block";
-              document.getElementById(curr_Box).style.backgroundColor = "darkgray";
+              document.getElementById("wallBox-txt").innerHTML =
+                "Barrier box: " + wall_box;
+              document.getElementById("submit-bfs").disabled = false;
+              document.getElementById("submit-dfs").disabled = false;
+              document.getElementById(curr_Box).style.backgroundColor =
+                "darkgray";
               document.getElementById("wall1").value = wall_box;
               document.getElementById("wall2").value = wall_box;
-            }
-            else if(wall_box.indexOf(curr_Box) != -1){
+            } else if (wall_box.indexOf(curr_Box) != -1) {
               document.getElementById(curr_Box).style.backgroundColor = "";
-              wall_box.splice(wall_box.indexOf(curr_Box))
-              document.getElementById("wallBox-num").innerHTML = wall_box;
+              wall_box.splice(wall_box.indexOf(curr_Box), 1);
+              document.getElementById("wallBox-txt").innerHTML =
+                "Barrier box: " + wall_box;
               document.getElementById("wall1").value = wall_box;
               document.getElementById("wall2").value = wall_box;
             }

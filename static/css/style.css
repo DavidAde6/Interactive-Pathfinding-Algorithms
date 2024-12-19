@@ -5,11 +5,14 @@
 body {
   background-color: aliceblue;
   margin: 0px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+a:link {
+  text-decoration: none;
 }
 
 .box {
-  border-color: black;
+  border-color: rgb(39, 46, 54);
   border-width: 2px;
   border-style: solid;
   width: 40px;
@@ -18,8 +21,20 @@ body {
   float: left;
 }
 
-.txt {
-  color: blue;
+#box-container {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+}
+
+#intro-txt {
+  color: rgb(39, 46, 54);
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: large;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 #box-container {
@@ -28,22 +43,101 @@ body {
   border-color: black;
   border-width: 0px;
   border-style: solid;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.navbar {
+  width: 100vw;
+  background-color: rgb(39, 46, 54);
+  height: 40px;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  align-items: center;
+  font-weight: bold;
+  display: flex;
+}
+
+.nav-txt {
+  width: calc(100vw - 140px);
+  margin-left: 20px;
+}
+
+.img {
+  width: 30px;
+  height: 30px;
+}
+
+.info-box {
+  width: 200px;
+  display: none;
+  height: 200px;
+  position: absolute;
+  background-color: rgb(39, 46, 54);
+  font-family: Helvetica, Arial, sans-serif;
+  margin-left: calc(100vw - 250px);
+  border-radius: 20px;
+  margin-top: 300px;
+  padding: 20px;
+}
+
+.info:hover + .info-box {
+  display: flex;
+}
+
+.info:focus + .info-box {
+  display: block;
+}
+
+.info {
+  display: flex;
+  justify-content: right;
+  margin-right: 10px;
 }
 
 .box:hover {
   background-color: rgb(137, 137, 137);
 }
 
+.main-container {
+  display: flex;
+  align-items: center;
+}
+
 #startingBox-txt {
-  display: none;
+  display: block;
+  font-size: larger;
+  margin-left: 10px;
 }
 
 #endingBox-txt {
-  display: none;
+  display: block;
+  font-size: larger;
+  margin-left: 10px;
+}
+
+.info-panel {
+  display: block;
+  position: absolute;
 }
 
 #wallBox-txt {
-  display: none;
+  display: block;
+  font-size: larger;
+  width: calc((100vw - 500px) / 2);
+  margin-left: 10px;
+}
+
+.search-path {
+  display: block;
+  font-size: larger;
+  width: calc((100vw - 500px) / 2);
+  margin-left: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
 }
 
 #start1 {
@@ -70,12 +164,15 @@ body {
   display: none;
 }
 
-#submit-bfs {
-  display: none;
-}
-
-#submit-dfs {
-  display: none;
+.btn {
+  display: block;
+  margin: 10px;
+  width: 170px;
+  height: 20px;
+  background-color: rgb(39, 46, 54);
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
 }
 
 .path {
